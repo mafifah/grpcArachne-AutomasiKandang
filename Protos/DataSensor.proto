@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcArachne";
+
+service DataSensor {
+  rpc GetDataTerbaru (DataRequest) returns (DataResponse);
+  rpc GetSemuaData (DataRequest) returns (stream DataResponse);
+  rpc InsertDataBaru (InsertDataRequest) returns (Response);
+}
+
+message DataRequest {
+  int64 IdPerangkat = 1;
+}
+
+message InsertDataRequest {
+  int64 IdPerangkat = 1;
+  int32 Suhu  = 2;
+  int32 Kelembaban = 3;
+}
+
+message DataResponse {
+  int64 IdDataSensor = 1;
+  int64 IdPerangkat = 2;
+  string Suhu = 3;
+  string Kelembaban = 4;
+  string Tanggal = 5;
+  string Waktu = 6;
+  
+}
+
+message Response{
+	string Message = 1;
+}

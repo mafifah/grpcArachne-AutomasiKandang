@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcArachne";
+
+service Perangkat {
+  rpc GetStatusPerangkat (PerangkatRequest) returns (PerangkatResponse);
+  rpc UpdateStatusPerangkat (UpdatePerangkatRequest) returns (Reply);
+}
+
+message PerangkatRequest {
+  int64 IdPerangkat = 1;
+}
+
+message UpdatePerangkatRequest {
+  int64 IdPerangkat = 1;
+  string NomorSeri = 2;
+  int64 StatusPerangkat = 3;
+  int64 StatusRoller = 4;
+}
+
+
+message PerangkatResponse {
+  int64 IdPerangkat = 1;
+  string NomorSeri = 2;
+  int64 StatusPerangkat = 3;
+  int64 StatusRoller = 4;
+}
+
+message Reply {
+  string message = 1;
+}
+
